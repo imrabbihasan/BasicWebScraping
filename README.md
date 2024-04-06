@@ -1,6 +1,6 @@
-# GitHub Profile Image Scraper
+# GitHub Profile Image & Information Scraper
 
-This Python script allows you to fetch the profile image of a GitHub user by providing their username.
+This Python script allows you to fetch the profile image & basic information of a GitHub user by providing their username.
 
 ## Requirements
 

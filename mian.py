@@ -28,6 +28,11 @@ try:
     bio = bio.text if bio else 'Not available'
     print('Bio: ', bio)
 
+    # Find the social media links based on the user's profile name
+    social_links = ['https://twitter.com/' + github_user, 'https://www.linkedin.com/in/' + github_user,
+                    'https://www.facebook.com/' + github_user, 'https://www.instagram.com/' + github_user]
+    print('Social Links: ', social_links)
+
     #  Find the user's website
     website = soup.find('a', class_='u-url')
     website = website['href'] if website else 'Not available'

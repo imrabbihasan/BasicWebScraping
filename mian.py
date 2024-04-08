@@ -68,6 +68,11 @@ try:
     stars = stars[2].text if stars else 'Not available'
     print('Number of stars: ', stars)
 
+    # Find the numbers of projects the user has been involved in
+    projects = soup.find_all('span', class_='Counter')
+    projects = projects[3].text if projects else 'Not available'
+    print('Number of projects: ', projects)
+
 
 except requests.exceptions.RequestException as e:
     print('Error fetching data:', e)

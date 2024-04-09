@@ -73,6 +73,11 @@ try:
     projects = projects[3].text if projects else 'Not available'
     print('Number of projects: ', projects)
 
+    # Find the number of contributions
+    contributions = soup.find_all('span', class_='Counter')
+    contributions = contributions[4].text if contributions else 'Not available'
+    print('Number of contributions: ', contributions)
+
 
 except requests.exceptions.RequestException as e:
     print('Error fetching data:', e)

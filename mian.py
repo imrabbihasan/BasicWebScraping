@@ -78,6 +78,11 @@ try:
     contributions = contributions[4].text if contributions else 'Not available'
     print('Number of contributions: ', contributions)
 
+    # Find the user's highlights
+    highlights = soup.find_all('span', class_='repo')
+    highlights = [highlight.text for highlight in highlights] if highlights else 'Not available'
+    print('Highlights: ', highlights)
+
 
 except requests.exceptions.RequestException as e:
     print('Error fetching data:', e)

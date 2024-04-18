@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as Bs
+import collections
 
 github_user = input('Input Github User: ')
 url = 'https://github.com/' + github_user
@@ -83,6 +84,23 @@ try:
     highlights = [highlight.text for highlight in highlights] if highlights else 'Not available'
     print('Highlights: ', highlights)
 
+    # Find the user's company
+    company = soup.find('span', itemprop='worksFor')
+    company = company.text if company else 'Not available'
+    print('Company: ', company)
+
+    # Find the user's most used programming languages
+    languages = soup.find_all('span', class_='repo-language-color')
+    if languages:
+        language_count = collections.Counter([lang.text.strip() for lang in languages])
+        most_used_language = language_count.most_common(1)[0][0]
+    else:
+        most_used_language = 'Not available'
+    print('Most used language: ', most_used_language)
+
+
+except requests.exceptions.HTTPError as e:
+    print('Error fetching data:', e)
 
 except requests.exceptions.RequestException as e:
     print('Error fetching data:', e)
